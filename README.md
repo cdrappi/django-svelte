@@ -1,7 +1,6 @@
 # django-svelte
 A template for Django/Svelte single-page apps, with a few extra files to help you deploy quickly to heroku
 
-# stack
 ## Frontend
 - [Svelte 3](https://svelte.dev/)
 - [webpack](https://webpack.js.org/)
@@ -12,6 +11,6 @@ A template for Django/Svelte single-page apps, with a few extra files to help yo
 - [gunicorn](https://gunicorn.org/)
 - [Whitenoise](http://whitenoise.evans.io/en/stable/)
 
-# heroku instructions
+## heroku instructions
 Use the buildpack [negativetwelve/heroku-buildpack-subdir](https://github.com/negativetwelve/heroku-buildpack-subdir):
 `$ heroku buildpacks:set https://github.com/negativetwelve/heroku-buildpack-subdir`
