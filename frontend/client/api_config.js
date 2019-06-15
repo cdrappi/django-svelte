@@ -1,10 +1,13 @@
 let API_HOST;
 
-const prodDatabase = false;
 
+// TODO: add your prod hostname
+const url = "django-svelte.herokuapp.com";
+
+// toggle this to true to ping the
+// prod DB when developing locally
+const prodDatabase = false;
 const hostname = window && window.location && window.location.hostname;
-// TODO:add your prod host
-const url = ".herokuapp.com";
 
 if (hostname === url || prodDatabase) {
   API_HOST = "https://" + url;
