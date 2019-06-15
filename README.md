@@ -1,5 +1,7 @@
 # django-svelte
-A template for Django/Svelte single-page apps, with a few extra files to help you deploy quickly to heroku
+A template for Django/Svelte single-page apps
+
+This gives you [JWT](https://jwt.io/) auth and a few extra files to help you deploy with heroku. There are a few TODO's in here where you should insert your own values (e.g. Django `SECRET_KEY`)
 
 ## Frontend
 - [Svelte 3](https://svelte.dev/)
