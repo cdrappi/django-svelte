@@ -14,4 +14,5 @@ A template for Django/Svelte single-page apps, with a few extra files to help yo
 # instructions
 - Remember to set `PYTHONPATH` to the outer `backend` dir, since our python does not live in the root directory
 - To deploy on Herkou, use the buildpack [negativetwelve/heroku-buildpack-subdir](https://github.com/negativetwelve/heroku-buildpack-subdir):
+
 `$ heroku buildpacks:set https://github.com/negativetwelve/heroku-buildpack-subdir`
