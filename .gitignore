@@ -1,3 +1,6 @@
+django_svelte_profile.bash
+django_svelte_venv/
+
 # Frontend
 frontend/node_modules/*
 frontend/build/*
