@@ -1,6 +1,6 @@
 {
-    "short_name": "app",
-    "name": "app",
+    "short_name": "django-svelte",
+    "name": "django-svelte",
     "icons": [{
         "src": "favicon.ico",
         "sizes": "64x64 32x32 24x24 16x16",
