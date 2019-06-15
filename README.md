@@ -13,8 +13,9 @@ This gives you [JWT](https://jwt.io/) auth and a few extra files to help you dep
 - [gunicorn](https://gunicorn.org/)
 - [Whitenoise](http://whitenoise.evans.io/en/stable/)
 
-# instructions
-## Environment variables
+## Instructions
+
+### Environment variables
 - Set `PYTHONPATH` to the outer `backend` dir, since our python does not live in the root directory
 - `DJANGO_SECRET_KEY`. Create one with:  
 ```
@@ -22,5 +23,7 @@ This gives you [JWT](https://jwt.io/) auth and a few extra files to help you dep
 >>> get_random_secret_key()
 ```
 - `DATABASE_URL`
-- To deploy on Herkou, use the buildpack [negativetwelve/heroku-buildpack-subdir](https://github.com/negativetwelve/heroku-buildpack-subdir):  
+
+## Heroku
+- Use the buildpack [negativetwelve/heroku-buildpack-subdir](https://github.com/negativetwelve/heroku-buildpack-subdir):  
 ```$ heroku buildpacks:set https://github.com/negativetwelve/heroku-buildpack-subdir```
