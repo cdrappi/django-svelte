@@ -1,3 +1,7 @@
+"""
+https://medium.com/@dakota.lillie/django-react-jwt-authentication-5015ee00ef9a
+https://github.com/dakotalillie/django_and_react_jwt_blog_post_api
+"""
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings

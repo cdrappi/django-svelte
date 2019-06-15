@@ -49,7 +49,6 @@
         })
           .then(res => res.json())
           .then(json => {
-            console.log(json);
             setUserData(json);
           })
           .catch(err => {
@@ -87,7 +86,6 @@
   }
 
   function logIn() {
-    console.log("pinging login endpoint");
     if (validateInputs()) {
       fetch(`${API_HOST}/token/`, {
         method: "POST",
@@ -105,7 +103,6 @@
             localStorage.setItem("token", json.token);
             setUserData(json.user);
           } else {
-            console.log(json);
             isMessageError = true;
             message = "Error logging in";
           }
@@ -117,7 +114,6 @@
   }
 
   function signUp() {
-    console.log("pinging signup endpoint");
     if (validateInputs()) {
       fetch(`${API_HOST}/users/`, {
         method: "POST",
