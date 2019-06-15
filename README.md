@@ -16,13 +16,13 @@ This gives you [JWT](https://jwt.io/) auth and a few extra files to help you dep
 ## Instructions
 
 ### Environment variables
-- Set `PYTHONPATH` to the outer `backend` dir, since our python does not live in the root directory
-- `DJANGO_SECRET_KEY`. Create one with:  
+- `DATABASE_URL`
+- `PYTHONPATH`. Point it to the outer `backend` dir, since our python does not live in the root directory
+- `DJANGO_SECRET_KEY`. Create one with:
 ```
 >>> from django.core.management.utils import get_random_secret_key
 >>> get_random_secret_key()
 ```
-- `DATABASE_URL`
 
 ## Heroku
 - Use the buildpack [negativetwelve/heroku-buildpack-subdir](https://github.com/negativetwelve/heroku-buildpack-subdir):  
