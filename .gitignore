@@ -1,0 +1,17 @@
+django_svelte_profile.bash
+django_svelte_venv/
+
+# Frontend
+frontend/node_modules/*
+frontend/build/*
+
+.DS_Store
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
