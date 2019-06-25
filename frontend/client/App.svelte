@@ -6,12 +6,9 @@
   import { getToken } from "./utils";
 
   let isLoggedIn = false;
-  function handleLoginToggle(event) {
-    isLoggedIn = event.detail.isLoggedIn;
-  }
 </script>
 
-<Auth on:message={handleLoginToggle} />
+<Auth bind:isLoggedIn={isLoggedIn}/>
 {#if isLoggedIn}
   <LoggedInApp />
 {:else}

@@ -3,20 +3,13 @@
   import { getToken, deleteToken } from "../utils.js";
   import { createEventDispatcher } from "svelte";
 
-  let isLoggedIn = false;
+  export let isLoggedIn;
   let id, username, email;
   let wantsToSignUp = false;
   let usernameInput = "";
   let passwordInput = "";
   let isMessageError = false;
   let message = "";
-
-  const dispatch = createEventDispatcher();
-  fetchUserData();
-
-  function dispatchLogin() {
-    dispatch("message", { isLoggedIn: isLoggedIn });
-  }
 
   function setUserData(json) {
     id = json.id;
@@ -25,7 +18,6 @@
     isLoggedIn = true;
     isMessageError = false;
     message = "Logged in as " + username;
-    dispatchLogin();
   }
 
   function clearUserData() {
@@ -35,7 +27,6 @@
     isLoggedIn = false;
     isMessageError = false;
     message = "Logged out";
-    dispatchLogin();
   }
 
   function fetchUserData() {
