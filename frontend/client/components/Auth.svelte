@@ -1,7 +1,6 @@
 <script>
   import API_HOST from "../api_config.js";
   import { getToken, deleteToken } from "../utils.js";
-  import { createEventDispatcher } from "svelte";
 
   export let isLoggedIn;
   let id, username, email;
