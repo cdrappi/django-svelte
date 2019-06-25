@@ -3,7 +3,7 @@
   import { getToken, deleteToken } from "../utils.js";
   import { createEventDispatcher } from "svelte";
 
-  let isLoggedIn = false;
+  export let isLoggedIn;
   let id, username, email;
   let wantsToSignUp = false;
   let usernameInput = "";
@@ -11,11 +11,10 @@
   let isMessageError = false;
   let message = "";
 
-  const dispatch = createEventDispatcher();
-  fetchUserData();
-
-  function dispatchLogin() {
-    dispatch("message", { isLoggedIn: isLoggedIn });
+  if (getToken()) {
+    // if we have a token saved to local storage,
+    // then log them in automatically
+    fetchUserData();
   }
 
   function setUserData(json) {
@@ -25,7 +24,6 @@
     isLoggedIn = true;
     isMessageError = false;
     message = "Logged in as " + username;
-    dispatchLogin();
   }
 
   function clearUserData() {
@@ -35,7 +33,6 @@
     isLoggedIn = false;
     isMessageError = false;
     message = "Logged out";
-    dispatchLogin();
   }
 
   function fetchUserData() {
