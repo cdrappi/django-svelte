@@ -11,6 +11,12 @@
   let isMessageError = false;
   let message = "";
 
+  if (getToken()) {
+    // if we have a token saved to local storage,
+    // then log them in automatically
+    fetchUserData();
+  }
+
   function setUserData(json) {
     id = json.id;
     username = json.username;
