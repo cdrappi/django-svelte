@@ -45,7 +45,11 @@
         })
           .then(res => res.json())
           .then(json => {
-            setUserData(json);
+            if (json.username) {
+              setUserData(json);
+            } else {
+              deleteToken();
+            }
           })
           .catch(err => {
             console.log(err);
