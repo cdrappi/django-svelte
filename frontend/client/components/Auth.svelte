@@ -17,7 +17,6 @@
   }
 
   function setUserData(json) {
-    console.log(json);
     id = json.id;
     username = json.username;
     email = json.email;
