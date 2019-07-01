@@ -17,6 +17,7 @@
   }
 
   function setUserData(json) {
+    console.log(json);
     id = json.id;
     username = json.username;
     email = json.email;
@@ -45,7 +46,11 @@
         })
           .then(res => res.json())
           .then(json => {
-            setUserData(json);
+            if (json.username) {
+              setUserData(json);
+            } else {
+              deleteToken();
+            }
           })
           .catch(err => {
             console.log(err);
