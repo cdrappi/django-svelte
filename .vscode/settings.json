@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "python.pythonPath": "${workspaceFolder}/django_svelte_venv/bin/python",
+  "python.envFile": "${workspaceFolder}/.vscode/python.env",
+  "python.formatting.provider": "autopep8",
+  "python.formatting.autopep8Args": ["--max-line-length", "79"],
+  "python.linting.pylintArgs": ["--load-plugins", "pylint_django"]
+}
