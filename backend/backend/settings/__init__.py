@@ -33,10 +33,15 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['.herokuapp.com']
+
+CORS_ALLOW_CREDENTIALS = True
+
+# TODO: add these
+CORS_ORIGIN_WHITELIST = []
+CSRF_TRUSTED_ORIGINS = ['herokuapp.com']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -134,8 +139,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ),
 }
-
-CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:8080', 'http://localhost:8080')
 
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'backend.utils.jwt_response_handler',
