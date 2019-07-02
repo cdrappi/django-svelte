@@ -8,7 +8,7 @@
   let isLoggedIn = false;
 </script>
 
-<Auth bind:isLoggedIn={isLoggedIn}/>
+<Auth bind:isLoggedIn />
 {#if isLoggedIn}
   <LoggedInApp />
 {:else}
