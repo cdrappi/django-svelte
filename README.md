@@ -18,7 +18,7 @@ This gives you [JSON Web Token](https://jwt.io/) auth and a few extra files to h
 ## Instructions
 
 ### Set environment variables
-- `DATABASE_URL`. For me, this is `postgres://christiandrappi@localhost:5432/django_svelte`
+- `DATABASE_URL`. For example, my local value is `postgres://christiandrappi@localhost:5432/django_svelte`
 - `PYTHONPATH`. Point it to the outer `backend` dir, since our python does not live in the root directory
 - `DJANGO_SECRET_KEY`. Create one with:  
     ```
