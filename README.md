@@ -40,3 +40,4 @@ Frontend Svelte server (port 8080):
 ### Deploying to Heroku
 - Use the buildpack [negativetwelve/heroku-buildpack-subdir](https://github.com/negativetwelve/heroku-buildpack-subdir):  
 ```$ heroku buildpacks:set https://github.com/negativetwelve/heroku-buildpack-subdir```
+- This uses the `.buildpacks` definition in the app root
