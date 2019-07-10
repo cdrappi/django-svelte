@@ -29,12 +29,12 @@ This gives you [JSON Web Token](https://jwt.io/) auth and a few extra files to h
 
 ### Running locally
 
-Backend Django server (port 8000):
+Backend Django server (port 8000):  
 `$ python backend/manage.py runserver --settings=backend.settings.dev`
 
-Frontend Svelte server (port 8080):
-`$ cd frontend`
-`$ npm run dev`
+Frontend Svelte server (port 8080):  
+`$ cd frontend`  
+`$ npm run dev`  
 
 
 ### Deploying to Heroku
