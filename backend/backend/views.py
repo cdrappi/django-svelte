@@ -1,6 +1,7 @@
 import json
 
 from django.contrib.auth.models import User
+from django.http.request import HttpRequest
 from django.http.response import HttpResponseBadRequest, JsonResponse
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import csrf_exempt
@@ -18,6 +19,7 @@ def create_csrf_token(request: HttpRequest) -> JsonResponse:
     :return: (JsonResponse)
     """
     return JsonResponse({'csrf_token': get_token(request)})
+
 
 @api_view(["GET"])
 def current_user(request):
