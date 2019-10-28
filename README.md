@@ -5,9 +5,13 @@ This gives you [JSON Web Token](https://jwt.io/) auth and a few extra files to h
 
 ## Tech stack
 
-### Frontend
+### Web
 - [Svelte 3](https://svelte.dev/)
 - [webpack](https://webpack.js.org/)
+
+### Mobile
+- [React Native](https://facebook.github.io/react-native/)
+- [expo](https://github.com/expo/expo)
 
 ### Backend
 - [Python 3.7](https://www.python.org/)
