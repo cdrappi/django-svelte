@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Django-svelte",
+    "name": "django-svelte",
     "slug": "mobile",
     "privacy": "public",
     "sdkVersion": "35.0.0",
