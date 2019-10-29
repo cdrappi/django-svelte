@@ -8,6 +8,7 @@
     deleteCsrfToken,
     setCsrfToken
   } from "../utils.js";
+  import { fetchUserData, fetchAuthToken } from "../../../shared/auth.js";
   export let isLoggedIn;
   let id, username, email;
   let wantsToSignUp = false;
@@ -18,7 +19,7 @@
   if (getToken()) {
     // if we have a token saved to local storage,
     // then log them in automatically
-    fetchUserData().then(fetchCsrfToken());
+    fetchUserData_().then(fetchCsrfToken_());
     // Also get a new CSRF token always
   }
   function setUserData(json) {
@@ -37,15 +38,11 @@
     isMessageError = false;
     message = "Logged out";
   }
-  async function fetchUserData() {
+  async function fetchUserData_() {
     let token = getToken();
     if (token) {
       try {
-        fetch(`${API_HOST}/self/`, {
-          headers: {
-            Authorization: `JWT ${token}`
-          }
-        })
+        fetchUserData(token)
           .then(res => res.json())
           .then(json => {
             if (json.username) {
@@ -86,18 +83,9 @@
       return false;
     }
   }
-  async function fetchAuthToken() {
+  async function fetchAuthToken_() {
     if (validateInputs()) {
-      fetch(`${API_HOST}/token/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          username: usernameInput,
-          password: passwordInput
-        })
-      })
+        fetchAuthToken()
         .then(res => res.json())
         .then(json => {
           if (json.token && json.user) {
@@ -237,7 +225,7 @@
     {#if message}
       <div class="message-container">
         <div class={isMessageError ? 'message-error' : 'message-success'}>
-           {message}
+          {message}
         </div>
       </div>
     {/if}
