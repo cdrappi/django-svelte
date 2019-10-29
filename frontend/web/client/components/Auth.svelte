@@ -8,7 +8,13 @@
     deleteCsrfToken,
     setCsrfToken
   } from "../utils.js";
-  import { fetchUserData, fetchAuthToken } from "../../../shared/auth.js";
+  import {
+    fetchUserData,
+    fetchAuthToken,
+    fetchCreateUser,
+    fetchCsrfToken,
+    validateInputs
+  } from "../../../shared/auth.js";
   export let isLoggedIn;
   let id, username, email;
   let wantsToSignUp = false;
@@ -68,24 +74,10 @@
     deleteCsrfToken();
     clearUserData();
   }
-  function validateInputs() {
-    if (usernameInput && passwordInput) {
-      return true;
-    } else {
-      isMessageError = true;
-      if (!usernameInput && !passwordInput) {
-        message = "Username and password cannot be blank";
-      } else if (!usernameInput) {
-        message = "Username cannot be blank";
-      } else if (!passwordInput) {
-        message = "Password cannot be blank";
-      }
-      return false;
-    }
-  }
+
   async function fetchAuthToken_() {
-    if (validateInputs()) {
-        fetchAuthToken()
+    if (validateInputs(usernameInput, passwordInput)) {
+      fetchAuthToken()
         .then(res => res.json())
         .then(json => {
           if (json.token && json.user) {
@@ -101,15 +93,10 @@
         });
     }
   }
-  function fetchCsrfToken() {
+  function fetchCsrfToken_() {
     let token = getToken();
     if (token && !getCsrfToken()) {
-      fetch(`${API_HOST}/csrf/`, {
-        method: "GET",
-        headers: {
-          Authorization: `JWT ${token}`
-        }
-      })
+      fetchCsrfToken(token)
         .then(res => res.json())
         .then(json => {
           if (json.csrf_token) {
@@ -125,20 +112,11 @@
     }
   }
   function logIn() {
-    fetchAuthToken().then(fetchCsrfToken());
+    fetchAuthToken_().then(fetchCsrfToken_());
   }
   function signUp() {
-    if (validateInputs()) {
-      fetch(`${API_HOST}/users/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          username: usernameInput,
-          password: passwordInput
-        })
-      })
+    if (validateInputs(usernameInput, passwordInput)) {
+      fetchCreateUser(usernameInput, passwordInput)
         .then(res => res.json())
         .then(json => {
           if (json.token) {
