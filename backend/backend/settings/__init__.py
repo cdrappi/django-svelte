@@ -20,14 +20,12 @@ BACKEND_BASE_DIR = os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 )
 APP_ROOT = os.path.dirname(BACKEND_BASE_DIR)
-FRONTEND_BASE_DIR = f'{APP_ROOT}/frontend'
+FRONTEND_BASE_DIR = f'{APP_ROOT}/frontend/web'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# TODO: generate your own SECRET_KEY using:
-# from django.core.management.utils import get_random_secret_key
+# SECURITY WARNING: keep the secret key used in production secret!``
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -39,7 +37,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 # TODO: add these
 CORS_ORIGIN_WHITELIST = []
-CSRF_TRUSTED_ORIGINS = ['herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['volvita.herokuapp.com']
 
 # Application definition
 INSTALLED_APPS = [
@@ -142,5 +140,5 @@ REST_FRAMEWORK = {
 
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'backend.utils.jwt_response_handler',
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=365),
 }

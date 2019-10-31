@@ -1,9 +1,13 @@
 django_svelte_profile.bash
 django_svelte_venv/
 
-# Frontend
-frontend/node_modules/*
-frontend/build/*
+# web
+frontend/web/node_modules/*
+frontend/web/build/*
+# mobile
+frontend/mobile/node_modules/*
+frontend/mobile/build/*
+frontend/mobile/hooks/*
 
 .DS_Store
 

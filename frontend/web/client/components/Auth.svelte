@@ -8,6 +8,13 @@
     deleteCsrfToken,
     setCsrfToken
   } from "../utils.js";
+  import {
+    fetchUserData,
+    fetchAuthToken,
+    fetchCreateUser,
+    fetchCsrfToken,
+    validateInputs
+  } from "../../../shared/auth.js";
   export let isLoggedIn;
   let id, username, email;
   let wantsToSignUp = false;
@@ -18,7 +25,7 @@
   if (getToken()) {
     // if we have a token saved to local storage,
     // then log them in automatically
-    fetchUserData().then(fetchCsrfToken());
+    fetchUserData_().then(fetchCsrfToken_());
     // Also get a new CSRF token always
   }
   function setUserData(json) {
@@ -37,15 +44,11 @@
     isMessageError = false;
     message = "Logged out";
   }
-  async function fetchUserData() {
+  async function fetchUserData_() {
     let token = getToken();
     if (token) {
       try {
-        fetch(`${API_HOST}/self/`, {
-          headers: {
-            Authorization: `JWT ${token}`
-          }
-        })
+        fetchUserData(token)
           .then(res => res.json())
           .then(json => {
             if (json.username) {
@@ -71,33 +74,10 @@
     deleteCsrfToken();
     clearUserData();
   }
-  function validateInputs() {
-    if (usernameInput && passwordInput) {
-      return true;
-    } else {
-      isMessageError = true;
-      if (!usernameInput && !passwordInput) {
-        message = "Username and password cannot be blank";
-      } else if (!usernameInput) {
-        message = "Username cannot be blank";
-      } else if (!passwordInput) {
-        message = "Password cannot be blank";
-      }
-      return false;
-    }
-  }
-  async function fetchAuthToken() {
-    if (validateInputs()) {
-      fetch(`${API_HOST}/token/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          username: usernameInput,
-          password: passwordInput
-        })
-      })
+
+  async function fetchAuthToken_() {
+    if (validateInputs(usernameInput, passwordInput)) {
+      fetchAuthToken(usernameInput, passwordInput)
         .then(res => res.json())
         .then(json => {
           if (json.token && json.user) {
@@ -113,15 +93,10 @@
         });
     }
   }
-  function fetchCsrfToken() {
+  function fetchCsrfToken_() {
     let token = getToken();
     if (token && !getCsrfToken()) {
-      fetch(`${API_HOST}/csrf/`, {
-        method: "GET",
-        headers: {
-          Authorization: `JWT ${token}`
-        }
-      })
+      fetchCsrfToken(token)
         .then(res => res.json())
         .then(json => {
           if (json.csrf_token) {
@@ -137,20 +112,11 @@
     }
   }
   function logIn() {
-    fetchAuthToken().then(fetchCsrfToken());
+    fetchAuthToken_().then(fetchCsrfToken_());
   }
   function signUp() {
-    if (validateInputs()) {
-      fetch(`${API_HOST}/users/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          username: usernameInput,
-          password: passwordInput
-        })
-      })
+    if (validateInputs(usernameInput, passwordInput)) {
+      fetchCreateUser(usernameInput, passwordInput)
         .then(res => res.json())
         .then(json => {
           if (json.token) {
@@ -237,7 +203,7 @@
     {#if message}
       <div class="message-container">
         <div class={isMessageError ? 'message-error' : 'message-success'}>
-           {message}
+          {message}
         </div>
       </div>
     {/if}
