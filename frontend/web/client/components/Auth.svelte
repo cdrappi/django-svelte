@@ -77,7 +77,7 @@
 
   async function fetchAuthToken_() {
     if (validateInputs(usernameInput, passwordInput)) {
-      fetchAuthToken()
+      fetchAuthToken(usernameInput, passwordInput)
         .then(res => res.json())
         .then(json => {
           if (json.token && json.user) {
